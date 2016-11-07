@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeepFit.Views.DaysView"
+             xmlns:b="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
+             x:Name="DaysView"
+             xmlns:services="clr-namespace:KeepFit.Views.Services;assembly=KeepFit">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <DataTemplate x:Key="PassedTemplate">
+        <ViewCell>
+          <b:Interaction.Behaviors>
+            <b:BehaviorCollection>
+              <b:EventToCommand CommandNameContext="{b:RelativeContext DaysView}"
+                                EventName="Tapped"
+                                CommandName="NavigateToSeriesViewCommand"
+                                CommandParameter="{Binding .}" />
+            </b:BehaviorCollection>
+          </b:Interaction.Behaviors>
+          <Grid BackgroundColor="Green">
+            <Label Text="{Binding ., StringFormat='Day {0}'}"
+                   HorizontalOptions="Center"/>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+      <DataTemplate x:Key="NotPassedTemplate">
+        <ViewCell>
+          <b:Interaction.Behaviors>
+            <b:BehaviorCollection>
+              <b:EventToCommand CommandNameContext="{b:RelativeContext DaysView}"
+                                EventName="Tapped"
+                                CommandName="NavigateToSeriesViewCommand"
+                                CommandParameter="{Binding .}" />
+            </b:BehaviorCollection>
+          </b:Interaction.Behaviors>
+          <Grid BackgroundColor="Red">
+            <Label Text="{Binding ., StringFormat='Day {0}'}"
+                   HorizontalOptions="Center"/>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+      <services:DayTemplateSelector x:Key="DayTemplateSelector"
+          PassedTemplate="{StaticResource PassedTemplate}"
+          NotPassedTemplate="{StaticResource NotPassedTemplate}"/>
+          <!--DaysNumbers="{Binding DaysNumbers}"/>-->
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ListView ItemsSource="{Binding DaysNumbers}"
+            ItemTemplate="{StaticResource DayTemplateSelector}" />
+
+    <!--<ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <b:Interaction.Behaviors>
+            <b:BehaviorCollection>
+              <b:EventToCommand CommandNameContext="{b:RelativeContext DaysView}"
+                                EventName="Tapped"
+                                CommandName="NavigateToSeriesViewCommand"
+                                CommandParameter="{Binding .}" />
+            </b:BehaviorCollection>
+          </b:Interaction.Behaviors>
+          <Label Text="{Binding ., StringFormat='Day {0}'}"
+                 HorizontalOptions="Center"/>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+
+  </ListView>-->
+
+</ContentPage>

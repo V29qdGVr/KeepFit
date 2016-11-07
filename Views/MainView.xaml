@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeepFit.Views.MainView"
+             BackgroundColor="Silver">
+
+  <StackLayout VerticalOptions="Center"
+               Padding="30,0,30,0">
+    
+    <Label Text="Choose the training plan"
+           HorizontalOptions="Center"
+           FontSize="Medium"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+    <Grid>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Grid Grid.Row="0"
+            Grid.Column="0">
+        <Image Source="crunches.png"
+               HorizontalOptions="End"
+               VerticalOptions="End">
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NavigateToLevelsViewCommand}" CommandParameter="1" />
+          </Image.GestureRecognizers>
+        </Image>
+      </Grid>
+
+      <Grid Grid.Row="0"
+            Grid.Column="1">
+        <Image Source="pullUps.png"
+               HorizontalOptions="Start"
+               VerticalOptions="End">
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NavigateToLevelsViewCommand}" CommandParameter="2" />
+          </Image.GestureRecognizers>
+        </Image>
+      </Grid>
+
+      <Grid Grid.Row="1"
+        Grid.Column="0">
+        <Image Source="pushUps.png"
+               HorizontalOptions="End"
+               VerticalOptions="Start">
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NavigateToLevelsViewCommand}" CommandParameter="3" />
+          </Image.GestureRecognizers>
+        </Image>
+      </Grid>
+
+      <Grid Grid.Row="1"
+            Grid.Column="1">
+        <Image Source="squats.png"
+               HorizontalOptions="Start"
+               VerticalOptions="Start">
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding NavigateToLevelsViewCommand}" CommandParameter="4" />
+          </Image.GestureRecognizers>
+        </Image>
+      </Grid>
+
+    </Grid>
+    
+  <Button Text="Delete user"/>
+
+  </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeepFit.Views.RegisterView"
+             BackgroundColor="Silver">
+
+  <StackLayout VerticalOptions="Center"
+               Padding="30, 0, 30, 0">
+
+    <Label Text="Name:"
+           FontSize="Medium"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+    <Entry Text="{Binding Name}"
+           TextColor="Black"
+           WidthRequest="100"
+           HorizontalOptions="Center"/>
+
+    <Label Text="Birthday:"
+           FontSize="Medium"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+    <DatePicker MinimumDate="1/1/1915"
+                MaximumDate="1/1/2015"
+                Date="{Binding Birthday}"
+                TextColor="Black"
+                HorizontalOptions="Center"/>
+
+    <Label Text="Sex:"
+           FontSize="Medium"
+           FontAttributes="Bold"
+           TextColor="Black" />
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Label Text="Female" TextColor="Black" HorizontalOptions="End" Grid.Row="0" Grid.Column="0" />
+      <Switch IsToggled="{Binding IsMale}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />
+      <Label Text="Male" TextColor="Black" HorizontalOptions="Start" Grid.Row="0" Grid.Column="2" />
+    </Grid>
+
+    <Button Text="Create user"
+            Command="{Binding RegisterCommand}"/>
+
+  </StackLayout>
+
+</ContentPage>
